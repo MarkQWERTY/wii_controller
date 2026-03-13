@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>Wii Remote</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="start-screen">
+        <h1>Wii Remote Emulator</h1>
+        <p>Press the button below to allow motion sensors and connect to the server.</p>
+        <button id="start-btn">Start & Allow Sensors</button>
+        <div id="status">Status: Waiting</div>
+    </div>
+
+    <div id="controller" style="display: none;">
+        <div class="top-section">
+            <div class="dpad">
+                <button class="dpad-btn up" data-btn="up"></button>
+                <button class="dpad-btn down" data-btn="down"></button>
+                <button class="dpad-btn left" data-btn="left"></button>
+                <button class="dpad-btn right" data-btn="right"></button>
+                <div class="dpad-center"></div>
+            </div>
+            <button class="btn a-btn" data-btn="A">A</button>
+        </div>
+
+        <div class="middle-section">
+            <button class="btn small-btn minus-btn" data-btn="minus">-</button>
+            <button class="btn home-btn" data-btn="home">HOME</button>
+            <button class="btn small-btn plus-btn" data-btn="plus">+</button>
+        </div>
+
+        <div class="bottom-section">
+            <button class="btn num-btn" data-btn="1">1</button>
+            <button class="btn num-btn" data-btn="2">2</button>
+        </div>
+
+        <div class="back-section">
+            <button class="btn b-btn" data-btn="B">B</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

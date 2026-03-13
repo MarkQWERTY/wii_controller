@@ -1,0 +1,211 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+}
+
+#start-screen {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#start-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#status {
+    margin-top: 15px;
+    color: #666;
+}
+
+#controller {
+    width: 300px;
+    height: 90vh;
+    max-height: 800px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+.top-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dpad {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.dpad-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #dddddd;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dpad-btn:active,
+.dpad-btn.active {
+    background-color: #cccccc;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dpad-btn.up {
+    top: 0;
+    left: 40px;
+}
+
+.dpad-btn.down {
+    bottom: 0;
+    left: 40px;
+}
+
+.dpad-btn.left {
+    top: 40px;
+    left: 0;
+}
+
+.dpad-btn.right {
+    top: 40px;
+    right: 0;
+}
+
+.dpad-center {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: #dddddd;
+}
+
+.a-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ccc;
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.middle-section {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.small-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.home-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.bottom-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.num-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
+.back-section {
+    position: absolute;
+    top: 20px;
+    left: -80px;
+    width: 60px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.b-btn {
+    width: 40px;
+    height: 80px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ccc;
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+}
+
+.btn:active,
+.btn.active {
+    background-color: #e0e0e0;
+    transform: scale(0.95);
+}
+
+.home-btn:active,
+.home-btn.active {
+    background-color: #0056b3;
+}
