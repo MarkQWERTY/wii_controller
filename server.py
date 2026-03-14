@@ -28,6 +28,10 @@ class ControllerState:
             'gyro': {'x': 0.0, 'y': 0.0, 'z': 0.0},
             'timestamp': 0
         }
+        self.pointer = {
+            'x': 128.0,
+            'y': 128.0
+        }
         self.mac_address = "00:11:22:33:44:55"
         self.packet_count = 0
 
@@ -57,6 +61,7 @@ async def websocket_handler(request):
                     data = json.loads(msg.data)
                     controller_state.buttons.update(data.get('buttons', {}))
                     controller_state.motion.update(data.get('motion', {}))
+                    controller_state.pointer.update(data.get('pointer', {}))
                 except json.JSONDecodeError:
                     pass
             elif msg.type == web.WSMsgType.ERROR:
@@ -176,7 +181,9 @@ class DSUServerProtocol(asyncio.DatagramProtocol):
         home_btn = 1 if controller_state.buttons.get('home') else 0
         touch_btn = 0
         
-        ls_x, ls_y, rs_x, rs_y = 128, 128, 128, 128
+        ls_x, ls_y = 128, 128
+        rs_x = int(controller_state.pointer.get('x', 128))
+        rs_y = int(controller_state.pointer.get('y', 128))
         
         analog_buttons = bytes([
             255 if controller_state.buttons.get('left') else 0,
