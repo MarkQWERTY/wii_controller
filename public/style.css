@@ -14,8 +14,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw;
     overflow: hidden;
     touch-action: none;
+    perspective: 1000px;
 }
 
 #start-screen {
@@ -24,6 +26,7 @@ body {
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
 }
 
 #start-btn {
@@ -43,16 +46,19 @@ body {
 }
 
 #controller {
-    width: 300px;
+    width: 85vw;
+    max-width: 400px;
     height: 90vh;
-    max-height: 800px;
+    max-height: 850px;
     background-color: #ffffff;
     border-radius: 30px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 5% 5%;
     position: relative;
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
 }
 
 .top-section {
@@ -65,18 +71,20 @@ body {
 
 .dpad {
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 45%;
+    aspect-ratio: 1 / 1;
+    max-width: 160px;
 }
 
 .dpad-btn {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 33.33%;
+    height: 33.33%;
     background-color: #dddddd;
     border: none;
-    border-radius: 5px;
+    border-radius: 15%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .dpad-btn:active,
@@ -85,45 +93,36 @@ body {
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.dpad-btn.up {
-    top: 0;
-    left: 40px;
-}
-
-.dpad-btn.down {
-    bottom: 0;
-    left: 40px;
-}
-
-.dpad-btn.left {
-    top: 40px;
-    left: 0;
-}
-
-.dpad-btn.right {
-    top: 40px;
-    right: 0;
-}
+.dpad-btn.up { top: 0; left: 33.33%; }
+.dpad-btn.down { bottom: 0; left: 33.33%; }
+.dpad-btn.left { top: 33.33%; left: 0; }
+.dpad-btn.right { top: 33.33%; right: 0; }
 
 .dpad-center {
     position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 40px;
-    height: 40px;
+    top: 33.33%;
+    left: 33.33%;
+    width: 33.33%;
+    height: 33.33%;
     background-color: #dddddd;
 }
 
 .a-btn {
-    width: 60px;
-    height: 60px;
+    width: 25%;
+    aspect-ratio: 1 / 1;
+    max-width: 80px;
+    min-width: 50px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.9);
     border: 2px solid #ccc;
-    font-size: 24px;
+    font-size: clamp(16px, 5vw, 24px);
     font-weight: bold;
     color: #555;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .middle-section {
@@ -131,28 +130,40 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 10%;
 }
 
 .small-btn {
-    width: 30px;
-    height: 30px;
+    width: 15%;
+    aspect-ratio: 1 / 1;
+    max-width: 40px;
+    min-width: 25px;
     border-radius: 50%;
     background-color: #fff;
     border: 1px solid #ccc;
-    font-size: 16px;
+    font-size: clamp(12px, 4vw, 18px);
     font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .home-btn {
-    width: 40px;
-    height: 40px;
+    width: 20%;
+    aspect-ratio: 1 / 1;
+    max-width: 50px;
+    min-width: 35px;
     border-radius: 50%;
     background-color: #007bff;
     color: white;
     border: none;
-    font-size: 10px;
+    font-size: clamp(8px, 2.5vw, 12px);
     font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bottom-section {
@@ -164,39 +175,52 @@ body {
 }
 
 .num-btn {
-    width: 40px;
-    height: 40px;
+    width: 18%;
+    aspect-ratio: 1 / 1;
+    max-width: 50px;
+    min-width: 35px;
     border-radius: 50%;
     background-color: #fff;
     border: 1px solid #ccc;
-    font-size: 18px;
+    font-size: clamp(14px, 4vw, 20px);
     font-weight: bold;
     color: #555;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .back-section {
     position: absolute;
-    top: 20px;
-    left: -80px;
-    width: 60px;
-    height: 120px;
+    top: 15%;
+    left: clamp(-80px, -20%, -40px);
+    width: clamp(40px, 15%, 80px);
+    height: 15%;
+    min-height: 80px;
+    max-height: 140px;
     background-color: #fff;
     border-radius: 10px 0 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.1);
+    transform: translateZ(-10px); /* Put behind main controller in 3D space */
 }
 
 .b-btn {
-    width: 40px;
-    height: 80px;
+    width: 70%;
+    height: 80%;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.9);
     border: 2px solid #ccc;
-    font-size: 20px;
+    font-size: clamp(14px, 4vw, 20px);
     font-weight: bold;
     color: #555;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn:active,
@@ -208,4 +232,83 @@ body {
 .home-btn:active,
 .home-btn.active {
     background-color: #0056b3;
+}
+
+/* Tablet and larger screens specific adjustments */
+@media (min-width: 600px) {
+    #controller {
+        border-radius: 40px;
+    }
+    .back-section {
+        left: -60px;
+        width: 60px;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    #controller {
+        flex-direction: row;
+        width: 90vw;
+        height: 80vh;
+        max-width: 800px;
+        max-height: 350px;
+        padding: 2% 5%;
+        border-radius: 40px;
+        /* When sideways, D-Pad is typically on left, 1/2 buttons on right */
+    }
+
+    .top-section {
+        flex: 2;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .dpad {
+        width: 100px;
+        height: 100px;
+        transform: rotate(90deg); /* D-Pad rotates with the controller to remain directional? Wait, no, it should rotate so Up is still Up relative to the screen, but visually D-pad is rotated when held sideways. Let's just rotate the D-pad container 90deg so Up is Left. Wait, physical Wii remote rotated sideways: Left D-Pad becomes Down, Up becomes Left. No, let's keep it straight for visual, but usually users want it to look rotated. Actually let's not rotate Dpad visually, just re-arrange */
+        /* Actually, in a sideways Wii remote, the D-Pad is on the left. The A button is next to it. */
+    }
+
+    .a-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+
+    .middle-section {
+        flex: 1;
+        flex-direction: column; /* Stack -, HOME, + vertically */
+        justify-content: space-evenly;
+        padding: 5% 0;
+    }
+
+    .bottom-section {
+        flex: 1.5;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .num-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        /* Rotate text so it's readable sideways */
+        transform: rotate(90deg);
+    }
+
+    .home-btn, .small-btn, .a-btn, .b-btn {
+        transform: rotate(90deg);
+    }
+
+    .back-section {
+        /* B button is on the back. When landscape (held sideways), it's behind the D-pad/A area. */
+        top: auto;
+        bottom: 20%;
+        left: -40px;
+        width: 60px;
+        height: 60%;
+        border-radius: 10px 0 0 10px;
+    }
 }
